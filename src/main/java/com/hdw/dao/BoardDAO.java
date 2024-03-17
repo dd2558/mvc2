@@ -51,7 +51,7 @@ public class BoardDAO {
 		}
 		return list;
 	}
-	public void insertBoard(BoardVO bVO) {
+	public void insertBoard(BoardVO bVo) {
 		String sql = "insert into board("
 				+ "num,name,email,pass,title,content)"
 				+ "values(board2_seq.nextval,?,?,?,?,?)";
@@ -62,11 +62,11 @@ public class BoardDAO {
 			conn=DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1,bVO.getName());
-			pstmt.setString(2,bVO.getEmail());
-			pstmt.setString(3,bVO.getPass());
-			pstmt.setString(4,bVO.getTitle());
-			pstmt.setString(5,bVO.getContent());
+			pstmt.setString(1,bVo.getName());
+			pstmt.setString(2,bVo.getEmail());
+			pstmt.setString(3,bVo.getPass());
+			pstmt.setString(4,bVo.getTitle());
+			pstmt.setString(5,bVo.getContent());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -131,4 +131,29 @@ public class BoardDAO {
 		return bVo;
 	}
 	
+	public void updateBoard(BoardVO bVo) {
+		String sql = "update board set name=?, email=?, pass=?, " + "title=?,content=? where num=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn=DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1,bVo.getName());
+			pstmt.setString(2,bVo.getEmail());
+			pstmt.setString(3,bVo.getPass());
+			pstmt.setString(4,bVo.getTitle());
+			pstmt.setString(5,bVo.getContent());
+			pstmt.setInt(6, bVo.getNum());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
 }
