@@ -1,7 +1,6 @@
 package com.hdw.util;
 
-import java.beans.Statement;
-import java.security.PublicKey;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
@@ -26,7 +25,7 @@ public class DBManager {
 		try {
 			rs.close();
 			stmt.close();
-			conn.colse();
+			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,6 +1,6 @@
 package com.hdw.dto;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class BoardVO {
 	private int num;
