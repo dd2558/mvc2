@@ -2,6 +2,7 @@ package com.hdw.controller;
 
 import com.hdw.controller.action.Action;
 import com.hdw.controller.action.BoardListAction;
+import com.hdw.controller.action.BoardWriteAction;
 import com.hdw.controller.action.BoardWriteFormAction;
 
 public class ActionFactory {
@@ -22,6 +23,8 @@ public class ActionFactory {
 			action = new BoardListAction();
 		}else if(command.equals("board_write_form")) {
 			action = new BoardWriteFormAction();
+		}else if(command.equals("board_write")) {
+			action = new BoardWriteAction();
 		}
 		return action;
 	}
