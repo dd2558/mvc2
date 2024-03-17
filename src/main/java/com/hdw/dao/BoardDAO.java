@@ -189,4 +189,21 @@ public class BoardDAO {
 		}
 		return bVo;
 		}
+	
+	public void deleteBoard(String num) {
+		String sql = "delete board2 where num=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn=DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, num);
+			
+			pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
