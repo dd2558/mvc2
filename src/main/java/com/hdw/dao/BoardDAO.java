@@ -156,4 +156,37 @@ public class BoardDAO {
 			DBManager.close(conn, pstmt);
 		}
 	}
+	
+	public BoardVO checkPassword(String pass, String num) {
+		String sql = "select * from board where pass=? and num=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BoardVO bVo = null;
+		try {
+			conn=DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, pass);
+			pstmt.setString(2, num);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				bVo = new BoardVO();
+				bVo.setNum(rs.getInt("num"));
+				bVo.setName(rs.getString("name"));
+				bVo.setEmail(rs.getString("email"));
+				bVo.setPass(rs.getString("pass"));
+				bVo.setTitle(rs.getString("title"));
+				bVo.setContent(rs.getString("content"));
+				bVo.setReadcount(rs.getInt("readcount"));
+				bVo.setWritedate(rs.getTimestamp("writedate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bVo;
+		}
 }
