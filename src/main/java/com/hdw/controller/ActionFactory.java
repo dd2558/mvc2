@@ -3,6 +3,7 @@ package com.hdw.controller;
 import com.hdw.controller.action.Action;
 import com.hdw.controller.action.BoardCheckPassFormAction;
 import com.hdw.controller.action.BoardListAction;
+import com.hdw.controller.action.BoardUpdateFormAction;
 import com.hdw.controller.action.BoardViewAction;
 import com.hdw.controller.action.BoardWriteAction;
 import com.hdw.controller.action.BoardWriteFormAction;
@@ -31,6 +32,8 @@ public class ActionFactory {
 			action = new BoardViewAction();
 		}else if(command.equals("board_check_pass_form")) {
 			action = new BoardCheckPassFormAction();
+		}else if(command.equals("board_update_form")) {
+			action = new BoardUpdateFormAction();
 		}
 		return action;
 	}
