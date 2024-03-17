@@ -1,6 +1,7 @@
 package com.hdw.controller;
 
 import com.hdw.controller.action.Action;
+import com.hdw.controller.action.BoardListAction;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -16,6 +17,9 @@ public class ActionFactory {
 	public Action getAction(String command) {
 		Action action = null;
 		System.out.println("ActionFactiry :" + command);
+		if(command.equals("board_list")){
+			action = new BoardListAction();
+		}
 		return action;
 	}
 	
